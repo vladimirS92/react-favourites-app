@@ -1,0 +1,9 @@
+a {
+    padding: 1rem;
+    border-bottom: none !important;
+}
+
+a.active {
+    padding: 1rem;
+    border-bottom: 2px solid darkblue !important;
+}
