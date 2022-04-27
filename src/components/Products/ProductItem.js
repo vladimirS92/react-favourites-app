@@ -1,14 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useContext } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-
-import { productActions } from '../../app/product-slice';
+import { ProductsContext } from '../../context/products-context';
 
 const ProductItem = (props) => {
-  const dispatch = useDispatch();
+  const toggleFav = useContext(ProductsContext).toggleFav;
 
   const switchFavouriteHandler = () => {
-    dispatch(productActions.switchFavourite(props.id));
+    toggleFav(props.id);
   };
 
   const footer = (
