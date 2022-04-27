@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import ProductItem from './ProductItem';
 
-import { ProductsContext } from '../../context/products-context';
+import { useStore } from '../../hooks-store/store';
 
 const ProductList = () => {
-  const productsList = useContext(ProductsContext).products;
+  const state = useStore()[0];
 
-  return productsList.map((product) => {
+  return state.products.map((product) => {
     return <ProductItem key={product.id} id={product.id} title={product.title} content={product.content} isFavourite={product.isFavourite} />;
   });
 };

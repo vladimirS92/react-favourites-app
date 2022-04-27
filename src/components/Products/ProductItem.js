@@ -1,13 +1,15 @@
-import { useContext } from 'react';
+import React from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-import { ProductsContext } from '../../context/products-context';
 
-const ProductItem = (props) => {
-  const toggleFav = useContext(ProductsContext).toggleFav;
+import { useStore } from '../../hooks-store/store';
+
+const ProductItem = React.memo((props) => {
+  console.log('RENDERING');
+  const dispatch = useStore(false)[1];
 
   const switchFavouriteHandler = () => {
-    toggleFav(props.id);
+    dispatch('TOGGLE_FAVOURITE', props.id);
   };
 
   const footer = (
@@ -26,6 +28,6 @@ const ProductItem = (props) => {
       <p>{props.content}</p>
     </Card>
   );
-};
+});
 
 export default ProductItem;
